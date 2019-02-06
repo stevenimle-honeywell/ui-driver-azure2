@@ -98,6 +98,17 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col span-6">
+        <label class="acc-label">{{t 'nodeDriver.azure.dockerPort.label'}}</label>
+        {{input type="text" value=config.dockerPort classNames="form-control" placeholder=(t 'nodeDriver.azure.dockerPort.placeholder')}}
+      </div>
+      <div class="col span-6">
+        <label class="acc-label">{{t 'nodeDriver.azure.openPort.label'}}</label>
+        {{input type="text" value=openPorts classNames="form-control" placeholder=(t 'nodeDriver.azure.openPort.placeholder')}}
+      </div>
+    </div>
   {{/accordion-list-item}}
 
   {{#accordion-list-item
@@ -120,23 +131,25 @@
 
     <div class="row">
       <div class="col span-6">
-        <label class="acc-label">{{t 'nodeDriver.azure.dockerPort.label'}}</label>
-        {{input type="text" value=config.dockerPort classNames="form-control" placeholder=(t 'nodeDriver.azure.dockerPort.placeholder')}}
-      </div>
-      <div class="col span-6">
-        <label class="acc-label">{{t 'nodeDriver.azure.openPort.label'}}</label>
-        {{input type="text" value=openPorts classNames="form-control" placeholder=(t 'nodeDriver.azure.openPort.placeholder')}}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col span-6">
         <label class="acc-label">{{t 'nodeDriver.azure.sshUser.label'}}</label>
         {{input type="text" value=config.sshUser classNames="form-control" placeholder=(t 'nodeDriver.azure.sshUser.placeholder')}}
       </div>
       <div class="col span-6">
         <label class="acc-label">{{t 'nodeDriver.azure.storageType.label'}}</label>
         {{new-select classNames="form-control" content=storageTypeChoices optionLabelPath='name' optionValuePath='value' value=config.storageType}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col span-6">
+        <label class="acc-label">Use Managed Disks</label>
+        <div>
+          {{input type="checkbox" checked=config.useManagedDisks}}
+        </div>
+      </div>
+      <div class="col span-6">
+        <label class="acc-label">OS Disk Size (GiB)</label>
+        {{input type="text" value=config.managedDiskSize classNames="form-control" disabled=notUseManagedDisks}}
       </div>
     </div>
   {{/accordion-list-item}}

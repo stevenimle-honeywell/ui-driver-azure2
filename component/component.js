@@ -613,6 +613,11 @@ export default Ember.Component.extend(NodeDriver, {
     return false;
   }),
 
+  notUseManagedDisks: computed('config.useManagedDisks', function() {
+    console.log(get(this, 'config.useManagedDisks'));
+    return !get(this, 'config.useManagedDisks');
+  }),
+
   // Write your component here, starting with setting 'model' to a machine with your config populated
   bootstrap: function() {
     // bootstrap is called by rancher ui on 'init', you're better off doing your setup here rather then the init function to ensure everything is setup correctly
